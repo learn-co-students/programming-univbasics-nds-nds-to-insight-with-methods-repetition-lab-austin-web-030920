@@ -13,6 +13,7 @@ def directors_totals(source)
 end
 
 def gross_for_director(d)
+  #gross_earnings = d[:movies].map{|y| y[:worldwide_gross]}.reduce(:+)
   total = 0
   index = 0
 
@@ -26,6 +27,7 @@ end
 
 def list_of_directors(source)
   # Write this implementation
+  names = source.map {|y| y[:name]}
 end
 
 def total_gross(source)
@@ -38,6 +40,7 @@ def total_gross(source)
   # Visit each key (i.e. director name), look up the value in the hash
   # returned by directors_totals, and add it to a running total. When done,
   # return the total
+  director_names = list_of_directors(source)
+  totals_by_director = directors_totals(source)
+  total = director_names.map {|name| totals_by_director[name]}.reduce(:+)
 end
-
-
